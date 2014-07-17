@@ -1,0 +1,68 @@
+
+//For the Java Lab. Collatz Conjecture #Using Cache. # 18-07-2014 @tgurumehar
+import java.util.Scanner;
+public class assignment
+{
+	public static void main(String args[])
+	{
+	long []ar=new long[100000004];
+	  long count=0;
+	  long j=2;
+    long k=2;
+   long max=0;
+   long large=0;
+	Scanner sc = new Scanner(System.in);
+	long t1=System.currentTimeMillis();
+	{
+	long i=sc.nextLong();
+    while(i!=1&&j<i)
+    { 
+              if((k<=100000000)&&(ar[(int)k]!=0))
+       {
+         count=count+ar[(int)k];
+         ar[(int)j]=count;
+         if(count>max)
+       {max=count;
+        large=j;
+       }
+         j++;
+         k=j;
+       count=0;
+       }
+
+       else if(((k>100000000)&&(k%2==0))||((k<=100000000)&&(ar[(int)k]==0)&&(k%2==0)))
+       {
+       	k=k/2;
+       	count++;
+       }
+       else if(((k>100000000)&&(k%2==1))||((k<=100000000)&&(ar[(int)k]==0)&&(k%2==1)))
+       {
+       	k=(3*k+1);
+       	count++;
+       }
+      if(k==1)
+{
+ar[(int)j]=count;
+if(count>max)
+{
+max=count;
+large=j;
+}
+j++;
+k=j;
+count=0;
+}
+}
+long t2=System.currentTimeMillis();
+long time_t=(t1-t2); 
+    if(j==i)
+		{       
+System.out.println("maximum  ="+ large);
+System.out.println("maximum steps required ="+ max);
+System.out.println("time->"+time_t);
+		}
+	
+
+}
+}
+}
